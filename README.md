@@ -1,6 +1,12 @@
-# Contrôle Symfony - Gestion de Parcours
 
-Ce projet permet la gestion de parcours d'apprentissage pour des utilisateurs (conseillers et candidats), avec authentification, dépôt de rendus, messages, et tableaux de bord personnalisés.
+<div align="center">
+  <img align="center" width="200" src="https://symfony.com/logos/symfony_black_03.png" alt="Symfony e-Boutique"/>
+</div>
+
+<h3 align="center">Contrôle Symfony - Gestion de Parcours</h3>
+<p align="center">Ce projet permet la gestion de parcours d'apprentissage pour des utilisateurs (conseillers et candidats), avec authentification, dépôt de rendus, messages, et tableaux de bord personnalisés.</p>
+<a align="center" href="https://theodsy.alwaysdata.net/" target="_blank"><p><strong>DEMO</strong></p></a>
+
 
 ## ✅ Fonctionnalités réalisées
 
