@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Boîte de réception{% endblock %}
+
+{% block body %}
+<div class="max-w-5xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6">📥 Boîte de réception</h1>
+
+    <table class="min-w-full bg-white rounded shadow">
+        <thead>
+            <tr class="bg-gray-100 text-left">
+                <th class="py-2 px-4">De</th>
+                <th class="py-2 px-4">Titre</th>
+                <th class="py-2 px-4">Date</th>
+                <th class="py-2 px-4">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in messages %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-2 px-4">{{ message.Emet.email }}</td>
+                    <td class="py-2 px-4">{{ message.titre }}</td>
+                    <td class="py-2 px-4">{{ message.datetime|date('d/m/Y H:i') }}</td>
+                    <td class="py-2 px-4">
+                        <a href="{{ path('app_messages_show', {id: message.id}) }}" class="text-blue-600 hover:underline">👁️ Lire</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="py-4 px-4 text-center text-gray-500">Aucun message reçu.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_messages_new') }}" class="inline-block mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✉️ Nouveau message</a>
+</div>
+{% endblock %}

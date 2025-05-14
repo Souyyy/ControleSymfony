@@ -1,0 +1,35 @@
+{# templates/ressources/edit.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la Ressource{% endblock %}
+
+{% block body %}
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-4">Modifier la Ressource</h1>
+
+    {{ form_start(form) }}
+    <div class="mb-4">
+        {{ form_row(form.intitule, {'attr': {'class': 'border rounded-md p-2 w-full'}}) }}
+    </div>
+    <div class="mb-4">
+        {{ form_row(form.presentation, {'attr': {'class': 'border rounded-md p-2 w-full'}}) }}
+    </div>
+    <div class="mb-4">
+        {{ form_row(form.url_du_document_physique, {'attr': {'class': 'border rounded-md p-2 w-full'}}) }}
+    </div>
+    <div class="mb-4">
+        {{ form_row(form.support, {'attr': {'class': 'border rounded-md p-2 w-full'}}) }}
+    </div>
+    <div class="mb-4">
+        {{ form_row(form.Nature, {'attr': {'class': 'border rounded-md p-2 w-full'}}) }}
+    </div>
+
+    <div class="mb-4">
+        <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600">
+            Modifier la Ressource
+        </button>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Parcours{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto px-4 py-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Modifier le Parcours</h1>
+
+        {{ form_start(form) }}
+            <div class="mb-4">
+                {{ form_label(form.objet, 'Objet', {'label_attr': {'class': 'text-lg font-medium text-gray-700'}}) }}
+                {{ form_widget(form.objet, {'attr': {'class': 'block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'}}) }}
+                {{ form_errors(form.objet) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.description, 'Description', {'label_attr': {'class': 'text-lg font-medium text-gray-700'}}) }}
+                {{ form_widget(form.description, {'attr': {'class': 'block w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'}}) }}
+                {{ form_errors(form.description) }}
+            </div>
+
+            <button type="submit" class="w-full px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-4">
+                Sauvegarder
+            </button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

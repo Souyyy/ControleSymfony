@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'étape{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-semibold text-gray-800">Détails de l'étape</h1>
+    
+    <div class="mt-6">
+        <h3 class="text-xl font-medium text-gray-700">Descriptif</h3>
+        <p class="text-gray-600">{{ etape.descriptif }}</p>
+    </div>
+    
+    <div class="mt-4">
+        <h3 class="text-xl font-medium text-gray-700">Consignes</h3>
+        <p class="text-gray-600">{{ etape.consignes }}</p>
+    </div>
+    
+    <div class="mt-4">
+        <h3 class="text-xl font-medium text-gray-700">Position dans le parcours</h3>
+        <p class="text-gray-600">{{ etape.position_dans_le_parcours }}</p>
+    </div>
+
+    <div class="mt-6 flex justify-end">
+        <a href="{{ path('app_etapes_edit', {'id': etape.id}) }}" class="px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700">
+            Modifier
+        </a>
+        <form action="{{ path('app_etapes_delete', {'id': etape.id}) }}" method="post" style="display:inline;">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ etape.id) }}">
+            <button type="submit" class="ml-4 px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+                Supprimer
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard - Administration{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-xl w-full">
+            <h1 class="text-3xl font-semibold text-center text-indigo-600 mb-8">Tableau de Bord</h1>
+            <div class="space-y-6">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="{{ path('app_user_index') }}" class="block p-4 bg-indigo-500 text-white rounded-lg shadow hover:bg-indigo-600 transition duration-300">
+                            Créer un utilisateur
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_ressources_index') }}" class="block p-4 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition duration-300">
+                            Créer une ressource
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_etapes_index') }}" class="block p-4 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 transition duration-300">
+                            Créer une étape
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_messages_index') }}" class="block p-4 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition duration-300">
+                            Créer un message
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_parcours_index') }}" class="block p-4 bg-purple-500 text-white rounded-lg shadow hover:bg-purple-600 transition duration-300">
+                            Créer un parcours
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{# templates/ressources/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Ressources{% endblock %}
+
+{% block body %}
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-4">Liste des Ressources</h1>
+
+    <div class="mb-4">
+        <a href="{{ path('app_ressources_new') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+            Ajouter une ressource
+        </a>
+    </div>
+
+    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+        <thead>
+            <tr>
+                <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Intitulé</th>
+                <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Présentation</th>
+                <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ressource in ressources %}
+                <tr class="border-t">
+                    <td class="py-3 px-6 text-sm text-gray-800">{{ ressource.intitule }}</td>
+                    <td class="py-3 px-6 text-sm text-gray-600">{{ ressource.presentation|slice(0, 50) }}...</td>
+                    <td class="py-3 px-6 text-sm text-gray-600">
+                        <a href="{{ path('app_ressources_show', {'id': ressource.id}) }}" class="text-blue-500 hover:underline">Voir</a> |
+                        <a href="{{ path('app_ressources_edit', {'id': ressource.id}) }}" class="text-yellow-500 hover:underline">Modifier</a> |
+                        <form method="post" action="{{ path('app_ressources_delete', {'id': ressource.id}) }}" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ressource.id) }}">
+                            <button type="submit" class="text-red-500 hover:underline">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

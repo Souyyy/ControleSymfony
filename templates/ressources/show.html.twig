@@ -1,0 +1,47 @@
+{# templates/ressources/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la Ressource{% endblock %}
+
+{% block body %}
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Détails de la Ressource</h1>
+
+    <div class="space-y-6">
+        <div class="flex items-center">
+            <strong class="text-xl text-gray-700 w-1/3">Intitulé :</strong>
+            <span class="text-lg text-gray-600">{{ ressource.intitule }}</span>
+        </div>
+
+        <div class="flex items-center">
+            <strong class="text-xl text-gray-700 w-1/3">Présentation :</strong>
+            <span class="text-lg text-gray-600">{{ ressource.presentation }}</span>
+        </div>
+
+        <div class="flex items-center">
+            <strong class="text-xl text-gray-700 w-1/3">URL du Document Physique :</strong>
+            <a href="{{ ressource.urlDuDocumentPhysique }}" class="text-lg text-blue-600 hover:text-blue-800 hover:underline" target="_blank">{{ ressource.urlDuDocumentPhysique }}</a>
+        </div>
+
+        <div class="flex items-center">
+            <strong class="text-xl text-gray-700 w-1/3">Support :</strong>
+            <span class="text-lg text-gray-600">{{ ressource.support|join(', ') }}</span>
+        </div>
+
+        <div class="flex items-center">
+            <strong class="text-xl text-gray-700 w-1/3">Nature :</strong>
+            <span class="text-lg text-gray-600">{{ ressource.Nature|join(', ') }}</span>
+        </div>
+    </div>
+
+    <div class="flex justify-between mt-8">
+        <a href="{{ path('app_ressources_edit', {'id': ressource.id}) }}" class="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out">
+            Modifier
+        </a>
+        <a href="{{ path('app_ressources_index') }}" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition duration-200 ease-in-out">
+            Retour à la liste
+        </a>
+    </div>
+</div>
+{% endblock %}

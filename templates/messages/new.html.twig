@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Nouveau Message{% endblock %}
+
+{% block body %}
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-md">
+    <h1 class="text-xl font-semibold mb-4">Envoyer un message</h1>
+
+    {{ form_start(form) }}
+        <div class="mb-4">{{ form_row(form.titre, {'attr': {'class': 'form-input mt-1 block w-full'}}) }}</div>
+        <div class="mb-4">{{ form_row(form.contenu, {'attr': {'class': 'form-textarea mt-1 block w-full'}}) }}</div>
+        <div class="mb-4">{{ form_row(form.Recoit, {'attr': {'class': 'form-select mt-1 block w-full'}}) }}</div>
+
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Envoyer</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_messages_index') }}" class="block mt-4 text-gray-600 hover:underline">← Retour à la boîte de réception</a>
+</div>
+{% endblock %}

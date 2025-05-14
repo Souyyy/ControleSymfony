@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Parcours{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto px-4 py-6">
+        <h1 class="text-3xl font-bold mb-4">Mon Parcours</h1>
+
+        {% if parcours %}
+            <h2 class="text-xl font-semibold">Parcours: {{ parcours.objet }}</h2>
+            <p>{{ parcours.description }}</p>
+
+            <h3 class="mt-4 text-lg font-semibold">Etapes</h3>
+            <ul class="list-disc pl-5">
+                {% for etape in etapes %}
+                    <li class="mt-2">
+                        <strong>Étape {{ loop.index }}:</strong> {{ etape.nom }}
+                        {% if etape.document %}
+                            <a href="{{ etape.document.path }}" class="text-blue-600 ml-2">Télécharger le document</a>
+                        {% endif %}
+                        {% if etape.message %}
+                            <a href="{{ path('app_message_show', {'id': etape.message.id}) }}" class="text-green-600 ml-2">Voir le message</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-red-600">Aucun parcours trouvé pour cet utilisateur.</p>
+        {% endif %}
+    </div>
+{% endblock %}

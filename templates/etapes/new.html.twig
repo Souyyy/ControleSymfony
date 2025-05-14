@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle étape{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-semibold text-gray-800">Ajouter une nouvelle étape</h1>
+    
+    <form action="{{ path('app_etapes_new') }}" method="post" class="mt-6 space-y-4">
+        {{ form_start(form) }}
+        
+        <div class="flex flex-col">
+            <label for="descriptif" class="font-medium text-gray-700">Descriptif</label>
+            {{ form_widget(form.descriptif, {'attr': {'class': 'mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'}}) }}
+        </div>
+        
+        <div class="flex flex-col">
+            <label for="consignes" class="font-medium text-gray-700">Consignes</label>
+            {{ form_widget(form.consignes, {'attr': {'class': 'mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'}}) }}
+        </div>
+        
+        <div class="flex flex-col">
+            <label for="position_dans_le_parcours" class="font-medium text-gray-700">Position dans le parcours</label>
+            {{ form_widget(form.position_dans_le_parcours, {'attr': {'class': 'mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'}}) }}
+        </div>
+
+        <div class="flex justify-end mt-4">
+            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                Sauvegarder
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+    </form>
+</div>
+{% endblock %}

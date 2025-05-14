@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des étapes{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-semibold text-gray-800">Etapes du parcours</h1>
+    
+    <div class="mt-4 mb-6 flex justify-end">
+        <a href="{{ path('app_etapes_new') }}" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            Ajouter une nouvelle étape
+        </a>
+    </div>
+    
+    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+        <thead>
+            <tr class="bg-gray-100 text-left">
+                <th class="px-6 py-3 text-sm font-medium text-gray-600">Descriptif</th>
+                <th class="px-6 py-3 text-sm font-medium text-gray-600">Consignes</th>
+                <th class="px-6 py-3 text-sm font-medium text-gray-600">Position dans le parcours</th>
+                <th class="px-6 py-3 text-sm font-medium text-gray-600">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for etape in etapes %}
+            <tr class="border-b">
+                <td class="px-6 py-4 text-sm text-gray-700">{{ etape.descriptif }}</td>
+                <td class="px-6 py-4 text-sm text-gray-700">{{ etape.consignes }}</td>
+<td class="px-6 py-4 text-sm text-gray-700">{{ etape.positionDansLeParcours }}</td>
+                <td class="px-6 py-4 text-sm">
+                    <a href="{{ path('app_etapes_show', {'id': etape.id}) }}" class="text-blue-500 hover:underline">Voir</a> |
+                    <a href="{{ path('app_etapes_edit', {'id': etape.id}) }}" class="text-yellow-500 hover:underline">Modifier</a> |
+                    <form action="{{ path('app_etapes_delete', {'id': etape.id}) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ etape.id) }}">
+                        <button type="submit" class="text-red-500 hover:underline">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
